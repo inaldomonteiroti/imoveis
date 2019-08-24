@@ -66,16 +66,17 @@ class ImovelController extends Controller
     }
 
     /**
-     * Exibe o recurso especificado. (Imoveis).
+     * Exibe o recurso especificado. Através de um ID passado por parametro (Imoveis).
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $imovel = Imovel::find($id);
+ 
+        return view('imoveis.show', compact('imovel'));
     }
-
     /**
      * Mostra o formulário para editar o recurso especificado. (Imoveis).
      *
