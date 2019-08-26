@@ -30,15 +30,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
 
-                        <li><a href="#">Todos</a></li>
-                        <li><a href="#">Apartamentos</a></li>
-                        <li><a href="#">Casas</a></li>
-                        <li><a href="#">Kitnet</a></li>
-
-                        <!--<li><a href="{{route('imoveis.index')}}">Todos</a></li>
+                        <li><a href="{{route('imoveis.index')}}">Todos</a></li>
                         <li><a href="{{route('imoveis.index', 'tipo=apartamento')}}">Apartamentos</a></li>
                         <li><a href="{{route('imoveis.index', 'tipo=casa')}}">Casas</a></li>
-                        <li><a href="{{route('imoveis.index', 'tipo=kitnet')}}">Kitnet</a></li>-->
+                        <li><a href="{{route('imoveis.index', 'tipo=kitnet')}}">Kitnet</a></li>
                     </ul>
                 </div>
             </div>

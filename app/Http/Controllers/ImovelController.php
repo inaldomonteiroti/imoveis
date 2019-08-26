@@ -37,19 +37,27 @@ class ImovelController extends Controller
 
     public function index(Request $request)
 {
-    $qtd = $request['qtd'] ?: 4;
-    $page = $request['page'] ?: 1;
-    $buscar = $request['buscar'];
-    Paginator::currentPageResolver(function () use ($page){
-        return $page;
-    });
-    if($buscar){
-        $imoveis = DB::table('imoveis')->where('cidadeEndereco', '=', $buscar)->paginate($qtd);
-    }else{  
-        $imoveis = DB::table('imoveis')->paginate($qtd);
-    }
-    $imoveis = $imoveis->appends(Request::capture()->except('page'));
-    return view('imoveis.index', compact('imoveis'));
+   $qtd = $request['qtd'] ?: 2;
+   $page = $request['page'] ?: 1;
+   $buscar = $request['buscar'];
+   $tipo = $request['tipo'];
+   
+   Paginator::currentPageResolver(function () use ($page){
+       return $page;
+   });
+  
+   if($buscar){
+       $imoveis = DB::table('imoveis')->where('cidadeEndereco', '=', $buscar)->paginate($qtd);
+   }else{ 
+       if($tipo){
+           $imoveis = DB::table('imoveis')->where('tipo', '=', $tipo)->paginate($qtd);
+       }else{
+           $imoveis = DB::table('imoveis')->paginate($qtd);
+       }
+   }
+   
+   $imoveis = $imoveis->appends(Request::capture()->except('page'));
+   return view('imoveis.index', compact('imoveis'));
 }
     
     /**
